@@ -1,4 +1,4 @@
-version: '2'
+version: '3.9'
 
 services:
   app:
@@ -10,7 +10,7 @@ services:
     ports:
       - "8080:8080"
     depends_on:
-      - db_postgres
+      - db
     restart: on-failure
 
   db:
