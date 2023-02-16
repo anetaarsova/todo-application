@@ -1,18 +1,22 @@
 package com.example.todoapplication.domain.tasks.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
+
+import java.io.Serializable;
 
 @Entity
 @Table(name = "tasks")
-public class Task {
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
+public class Task implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = true)
+    @Column
     private String caption;
-    @Column(nullable = true)
+    @Column
     private String content;
-    @Column(nullable = true)
+    @Column
     private boolean completed;
     public void setId(Long id) {
         this.id = id;

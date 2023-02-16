@@ -23,7 +23,7 @@ public class TaskService {
   }
 
   public Task getById(Long id){
-      return taskRepository.getReferenceById(id);
+      return taskRepository.getById(id);
   }
 
   public Task saveOrUpdate(Task task){
