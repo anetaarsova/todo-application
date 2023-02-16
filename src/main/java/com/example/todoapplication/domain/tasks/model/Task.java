@@ -2,7 +2,8 @@ package com.example.todoapplication.domain.tasks.model;
 
 import jakarta.persistence.*;
 
-@Entity(name="task")
+@Entity
+@Table(name = "tasks")
 public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,7 +13,7 @@ public class Task {
     @Column(nullable = true)
     private String content;
     @Column(nullable = true)
-    private boolean check;
+    private boolean completed;
     public void setId(Long id) {
         this.id = id;
     }
@@ -21,4 +22,10 @@ public class Task {
         return id;
     }
 
+    @Override
+    public String toString() {
+        return "Task{" +
+                "id=" + id +
+                '}';
+    }
 }
