@@ -2,7 +2,7 @@ BEGIN;
 
 
 CREATE TABLE IF NOT EXISTS task (
-  id BIGSERIAL PRIMARY KEY,
+  id BIGSERIAL  PRIMARY KEY,
   caption text,
   content text,
   completed boolean,

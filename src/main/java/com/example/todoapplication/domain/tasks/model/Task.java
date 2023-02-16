@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "tasks")
+@Table
 @JsonIgnoreProperties({"hibernateLazyInitializer"})
 public class Task implements Serializable {
     @Id
