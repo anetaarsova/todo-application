@@ -10,7 +10,7 @@ import lombok.ToString;
 import java.io.Serializable;
 
 @Entity
-@Table
+@Table(name = "tasks")
 @JsonIgnoreProperties({"hibernateLazyInitializer"})
 @Getter
 @Setter

@@ -1,7 +1,7 @@
 BEGIN;
 
 
-CREATE TABLE IF NOT EXISTS task (
+CREATE TABLE IF NOT EXISTS public.tasks (
   id BIGSERIAL  PRIMARY KEY,
   caption text,
   content text,
