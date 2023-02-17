@@ -1,6 +1,25 @@
 version: '3.9'
 
 services:
+
+  db:
+    image: 'postgres:9.6.8'
+    restart: always
+    container_name: db_postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=tasks_db
+    healthcheck:
+      test: [ "CMD-SHELL", "sh -c 'pg_isready -U postgres -d tasks_db'" ]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/db.sql
   app:
     image: 'todo-application:latest'
     build:
@@ -10,23 +29,9 @@ services:
     ports:
       - "8080:8080"
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     restart: on-failure
-
-  db:
-    image: 'postgres:9.6.8'
-    restart: always
-    container_name: db_postgres
-    ports:
-      - "5432:5432"
-    volumes:
-      - pg_data:/var/lib/postgresql/data
-      - ./init.sql:/docker-entrypoint-initdb.d/db.sq
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=tasks_db
-
 volumes:
   pg_data:
     driver: local
