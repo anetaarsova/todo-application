@@ -43,4 +43,4 @@ docker rm -f e55af641398f
 
 ### Swagger
 
-http://localhost:8080/swagger-ui-custom.html
+http://localhost:8080/swagger-ui/index.html
